@@ -1,8 +1,6 @@
 #include <GL/glew.h>
 #include <GL/glfw.h>
-#include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 double view_center[] = {0,0};
 double view_size = 2;
@@ -100,17 +98,11 @@ int main(int argc, char** argv) {
             view_size = 2;
         }
 
-        glClear(GL_COLOR_BUFFER_BIT);
-        
         glBegin(GL_QUADS);
-        glTexCoord2f(view_center[0] - view_size, view_center[1] - view_size);
-        glVertex3f(-1.0f, 1.0f, 0.0f);
-        glTexCoord2f(view_center[0] - view_size, view_center[1] + view_size);
-        glVertex3f(-1.0f, -1.0f, 0.0f);
-        glTexCoord2f(view_center[0] + view_size, view_center[1] + view_size);
-        glVertex3f(1.0f, -1.0f, 0.0f);
-        glTexCoord2f(view_center[0] + view_size, view_center[1] - view_size);
-        glVertex3f(1.0f, 1.0f, 0.0f);
+            glTexCoord2f(view_center[0] - view_size, view_center[1] - view_size); glVertex3f(-1.0f,  1.0f, 0.0f);
+            glTexCoord2f(view_center[0] - view_size, view_center[1] + view_size); glVertex3f(-1.0f, -1.0f, 0.0f);
+            glTexCoord2f(view_center[0] + view_size, view_center[1] + view_size); glVertex3f( 1.0f, -1.0f, 0.0f);
+            glTexCoord2f(view_center[0] + view_size, view_center[1] - view_size); glVertex3f( 1.0f,  1.0f, 0.0f);
         glEnd();
 
         glfwSwapBuffers();
