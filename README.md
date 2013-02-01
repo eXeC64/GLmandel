@@ -7,4 +7,5 @@ Don't judge me on it.
 Controls
 --------
 W,A,S,D - Move the viewport around
+
 I,O - Zoom in and out respectively
