@@ -44,18 +44,24 @@ int main(int argc, char** argv) {
     glfwSetWindowTitle("Mandelbrot Renderer");
     glewInit();
 
-    GLint vert_len = strlen(vert_src);
-    GLint frag_len = strlen(frag_src);
+    const GLchar** vertex_source = &vert_src;
+    const GLchar** fragment_source = &frag_src;
 
-    GLuint fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragment_shader, 1, &frag_src, &frag_len);
+    GLuint vertex_shader, fragment_shader, program;
+    GLint vert_len, frag_len;
+
+    vert_len = strlen(vert_src);
+    frag_len = strlen(frag_src);
+
+    fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragment_shader, 1, fragment_source, &frag_len);
     glCompileShader(fragment_shader);
 
-    GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertex_shader, 1, &vert_src, &vert_len);
+    vertex_shader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertex_shader, 1, vertex_source, &vert_len);
     glCompileShader(vertex_shader);
 
-    GLuint program = glCreateProgram();
+    program = glCreateProgram();
     glAttachShader(program, vertex_shader);
     glAttachShader(program, fragment_shader);
     glLinkProgram(program);
